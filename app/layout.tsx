@@ -16,7 +16,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='en' suppressHydrationWarning>
       <head />
       <body className={inter.className}>
-        <ThemeProvider attribute='class' defaultTheme='dark' forcedTheme='dark' enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          forcedTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
           <div className='container mx-auto pt-5 h-screen'>
             <SpaMenuBar />
             <div className='p-5 md:p-10' />

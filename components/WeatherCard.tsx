@@ -12,7 +12,7 @@ interface WeatherCardProps {
 export default function WeatherCard(props: WeatherCardProps) {
   const { title, date, time, temperature } = props;
   return (
-    <Card className='sm:w-80'>
+    <Card className='sm:w-80 xl:w-96'>
       <CardHeader>
         <CardTitle className='text-lg font-semibold text-foreground'>{title ?? 'ingen data'}</CardTitle>
       </CardHeader>
@@ -34,7 +34,7 @@ export default function WeatherCard(props: WeatherCardProps) {
 function selectIcon(temperature?: number) {
   if (!temperature) return <IconSlashCircle className='h-10 w-10 text-primary' />;
   if (temperature > 25) {
-    return <IconCloudSun className='h-10 w-10 text-primary' />;
+    return <IconCloudSun className='h-10 w-10 text-yellow-400' />;
   } else {
     return <IconSnowflake className='h-10 w-10 text-primary' />;
   }
