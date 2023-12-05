@@ -19,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider attribute='class' defaultTheme='dark' forcedTheme='dark' enableSystem disableTransitionOnChange>
           <div className='container mx-auto pt-5 h-screen'>
             <SpaMenuBar />
+            <div className='p-5 md:p-10' />
             {children}
           </div>
         </ThemeProvider>

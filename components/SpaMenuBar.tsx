@@ -10,7 +10,7 @@ import {
 
 export default function SpaMenuBar() {
   return (
-    <Menubar className='mb-5'>
+    <Menubar className='px-5 py-7'>
       <MenubarMenu>
         <MenubarTrigger>Spa</MenubarTrigger>
         <MenubarContent>

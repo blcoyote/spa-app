@@ -12,7 +12,7 @@ interface WeatherCardProps {
 export default function WeatherCard(props: WeatherCardProps) {
   const { title, date, time, temperature } = props;
   return (
-    <Card className='border-primary'>
+    <Card className='sm:w-80'>
       <CardHeader>
         <CardTitle className='text-lg font-semibold text-foreground'>{title ?? 'ingen data'}</CardTitle>
       </CardHeader>
