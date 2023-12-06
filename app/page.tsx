@@ -1,11 +1,45 @@
 import WeatherCard from '@/components/WeatherCard';
+import { SPAModel } from '@/models/spa.model';
+import dayjs from 'dayjs';
+import next from 'next';
 
-export default function Home() {
+async function getLastRecord(endpoint: 'last' | 'last24h') {
+  const url = process.env.baseurl;
+  const key = process.env.key;
+  const res = await fetch(`${url}/spa/${endpoint}?Key=${key}`, {
+    next: { revalidate: 5 * 60, tags: ['spa', 'spaLastRecord'] },
+  });
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+}
+
+export default async function Home() {
+  const lastRecord = (await getLastRecord('last')) as SPAModel;
+  const last24hRecord = (await getLastRecord('last24h')) as SPAModel[];
+  const timestamp = dayjs(lastRecord.timestamp);
+
   return (
     <div className='container mx-auto flex justify-center'>
       <div className='grid grid-flow-row-dense grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 lg:gap-20'>
-        <WeatherCard title='Luft temperatur' temperature={15} date='05/12-2023' time='21:58' />
-        <WeatherCard title='Vand temperatur' temperature={38} date='05/12-2023' time='21:58' />
+        <WeatherCard
+          title='Luft temperatur'
+          temperature={lastRecord.temp_air}
+          date={timestamp.format('DD/MM-YYYY')}
+          time={timestamp.format('HH:mm')}
+        />
+        <WeatherCard
+          title='Vand temperatur'
+          temperature={lastRecord.temp_water}
+          date={timestamp.format('DD/MM-YYYY')}
+          time={timestamp.format('HH:mm')}
+        />
       </div>
     </div>
   );
