@@ -29,13 +29,13 @@ export default async function Home() {
     <div className='container mx-auto flex justify-center'>
       <div className='grid grid-flow-row-dense grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 lg:gap-20'>
         <WeatherCard
-          title='Luft temperatur'
+          title='Luft-temperatur'
           temperature={lastRecord.temp_air}
           date={timestamp.format('DD/MM-YYYY')}
           time={timestamp.format('HH:mm')}
         />
         <WeatherCard
-          title='Vand temperatur'
+          title='Vand-temperatur'
           temperature={lastRecord.temp_water}
           date={timestamp.format('DD/MM-YYYY')}
           time={timestamp.format('HH:mm')}
