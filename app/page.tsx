@@ -3,10 +3,10 @@ import { SPAModel } from '@/models/spa.model';
 import dayjs from 'dayjs';
 import next from 'next';
 
-async function getLastRecord(endpoint: 'last' | 'last24h') {
+async function getLastRecord() {
   const url = process.env.baseurl;
   const key = process.env.key;
-  const res = await fetch(`${url}/spa/${endpoint}?Key=${key}`, {
+  const res = await fetch(`${url}/spa/last?Key=${key}`, {
     next: { revalidate: 5 * 60, tags: ['spa', 'spaLastRecord'] },
   });
   // The return value is *not* serialized
@@ -21,8 +21,8 @@ async function getLastRecord(endpoint: 'last' | 'last24h') {
 }
 
 export default async function Home() {
-  const lastRecord = (await getLastRecord('last')) as SPAModel;
-  const last24hRecord = (await getLastRecord('last24h')) as SPAModel[];
+  const lastRecord = (await getLastRecord()) as SPAModel;
+  //const last24hRecord = (await getLastRecord('last24h')) as SPAModel[];
   const timestamp = dayjs(lastRecord.timestamp);
 
   return (
