@@ -26,7 +26,10 @@ COPY . .
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
-
+ARG BASEURL 
+ENV BASEURL $baseurl
+ARG KEY
+ENV KEY $key
 # If using npm comment out above and use below instead
 #RUN yarn build
 RUN npm run build
@@ -41,6 +44,8 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 ARG HOSTNAME
 ENV HOSTNAME $hostname
+ARG BASEURL 
+ENV BASEURL $baseurl
 ARG KEY
 ENV KEY $key
 
