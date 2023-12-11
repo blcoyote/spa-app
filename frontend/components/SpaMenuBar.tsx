@@ -14,9 +14,9 @@ export default function SpaMenuBar() {
       <MenubarMenu>
         <MenubarTrigger>Spa</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem>Reload</MenubarItem>
+          <MenubarItem disabled>Reload</MenubarItem>
           <MenubarSeparator />
-          <MenubarItem>Om</MenubarItem>
+          <MenubarItem disabled>Om</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
     </Menubar>
