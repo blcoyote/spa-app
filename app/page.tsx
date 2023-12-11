@@ -24,8 +24,8 @@ async function getLastRecord() {
   });
 }
 async function getLast24hRecord() {
-  const url = process.env.baseurl;
-  const key = process.env.key;
+  const url = process.env.BASEURL;
+  const key = process.env.KEY;
   const res = await fetch(`${url}/spa/last24h?Key=${key}`, {
     next: { revalidate: 5 * 60, tags: ['spa', 'spaLast24hRecord'] },
   });
