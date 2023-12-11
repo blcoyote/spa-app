@@ -39,7 +39,15 @@ ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 ENV NEXT_TELEMETRY_DISABLED 1
 
-LABEL traefik.http.routers.spa.rule="Host(`spa.elcoyote.dk`)"
+ARG hostname
+ENV hostname $hostname
+ARG baseurl
+ENV baseurl $baseurl
+ARG key
+ENV key $key
+
+
+LABEL traefik.http.routers.spa.rule="Host(`$hostname`)"
 LABEL traefik.http.routers.spa.tls="true"
 LABEL traefik.http.routers.spa.tls.certresolver="lets-encrypt"
 LABEL traefik.http.services.spa.loadbalancer.server.port="80"
