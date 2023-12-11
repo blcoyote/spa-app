@@ -14,35 +14,33 @@ export const Chart24h = (props: { data: SPAModel[] }) => {
   });
 
   return (
-    <div className='flex justify-center items-center min-h-fit md:col-span-2'>
-      <Card className='w-full drop-shadow-md'>
-        <CardHeader>
-          <CardTitle className='text-lg font-semibold text-foreground'>Historik (24 timer)</CardTitle>
-        </CardHeader>
-        <Separator />
-        <CardContent>
-          <ResponsiveContainer width='100%' height={300}>
-            <LineChart data={data} margin={{ top: 20, left: -30 }}>
-              <CartesianGrid strokeDasharray='3 3' />
-              <XAxis
-                dataKey='timestamp'
-                tickFormatter={(value) => {
-                  return dayjs(value).format('HH:mm');
-                }}
-              />
-              <YAxis />
-              <Tooltip
-                labelFormatter={(value) => {
-                  return dayjs(value).format('DD/MM-YYYY HH:mm');
-                }}
-              />
-              <Legend align='right' />
-              <Line name='Luft temperatur' type='monotone' dataKey='temp_air' stroke='#8884d8' />
-              <Line name='Vand temperatur' type='monotone' dataKey='temp_water' stroke='#82ca9d' />
-            </LineChart>
-          </ResponsiveContainer>
-        </CardContent>
-      </Card>
-    </div>
+    <Card className='w-full drop-shadow-md'>
+      <CardHeader>
+        <CardTitle className='text-lg font-semibold text-foreground'>Historik (24 timer)</CardTitle>
+      </CardHeader>
+      <Separator />
+      <CardContent>
+        <ResponsiveContainer width='100%' height={300}>
+          <LineChart data={data} margin={{ top: 20, left: -30 }}>
+            <CartesianGrid strokeDasharray='3 3' />
+            <XAxis
+              dataKey='timestamp'
+              tickFormatter={(value) => {
+                return dayjs(value).format('HH:mm');
+              }}
+            />
+            <YAxis />
+            <Tooltip
+              labelFormatter={(value) => {
+                return dayjs(value).format('DD/MM-YYYY HH:mm');
+              }}
+            />
+            <Legend align='right' />
+            <Line name='Luft' type='monotone' dataKey='temp_air' stroke='#8884d8' />
+            <Line name='Vand' type='monotone' dataKey='temp_water' stroke='#82ca9d' />
+          </LineChart>
+        </ResponsiveContainer>
+      </CardContent>
+    </Card>
   );
 };

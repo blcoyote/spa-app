@@ -61,7 +61,7 @@ export default async function Home() {
             date={timestamp.format('DD/MM-YYYY')}
             time={timestamp.format('HH:mm')}
           />
-          <div className='mb-5'>
+          <div className='flex justify-center items-center min-h-fit md:col-span-2 mb-5'>
             <Chart24h data={last24hRecord} />
           </div>
         </div>
