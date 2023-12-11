@@ -27,11 +27,6 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
 
-ARG BASEURL 
-ENV BASEURL $BASEURL
-ARG KEY
-ENV KEY $KEY
-
 # If using npm comment out above and use below instead
 #RUN yarn build
 RUN npm run build
@@ -44,19 +39,6 @@ ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 ENV NEXT_TELEMETRY_DISABLED 1
 
-ARG HOSTNAME
-ENV HOSTNAME $HOSTNAME
-ARG BASEURL 
-ENV BASEURL $BASEURL
-ARG KEY
-ENV KEY $KEY
-
-
-
-LABEL traefik.http.routers.spa.rule="Host(`$HOSTNAME`)"
-LABEL traefik.http.routers.spa.tls="true"
-LABEL traefik.http.routers.spa.tls.certresolver="lets-encrypt"
-LABEL traefik.http.services.spa.loadbalancer.server.port="80"
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs

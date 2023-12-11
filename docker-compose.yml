@@ -3,10 +3,15 @@ services:
     spa:
         network_mode: web
         container_name: spa
-        image: spaapp:latest
+        image: spa-app:latest
         # env_file:
         #     - .env
         environment:
             - BASEURL=$BASEURL
-            - HOSTNAME=$HOST
+            - HOSTNAME=$HOSTNAME
             - KEY=$KEY
+        labels: 
+            - traefik.http.routers.spa.rule="Host(`$HOSTNAME`)"
+            - traefik.http.routers.spa.tls="true"
+            - traefik.http.routers.spa.tls.certresolver="lets-encrypt"
+            - traefik.http.services.spa.loadbalancer.server.port="80"
