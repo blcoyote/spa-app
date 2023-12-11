@@ -40,8 +40,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            "HOSTNAME=${{ variables.HOSTNAME }}"
-            "BASEURL=${{ variables.BASEURL }}"
+            "HOSTNAME=${{ secrets.HOSTNAME }}"
+            "BASEURL=${{ secrets.BASEURL }}"
             "KEY=${{ secrets.KEY }}"
 
   remove-old-artifacts:
