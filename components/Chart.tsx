@@ -9,8 +9,8 @@ import dayjs from 'dayjs';
 
 export const Chart24h = (props: { data: SPAModel[] }) => {
   const { data } = props;
-  const newData = data.filter(function (value, index, Arr) {
-    return index % 2 == 0;
+  const newData = data.sort((a, b) => {
+    return a.id - b.id;
   });
 
   return (
@@ -22,7 +22,7 @@ export const Chart24h = (props: { data: SPAModel[] }) => {
         <Separator />
         <CardContent>
           <ResponsiveContainer width='100%' height={300}>
-            <LineChart data={newData} margin={{ top: 20, left: -30 }}>
+            <LineChart data={data} margin={{ top: 20, left: -30 }}>
               <CartesianGrid strokeDasharray='3 3' />
               <XAxis
                 dataKey='timestamp'
@@ -31,7 +31,11 @@ export const Chart24h = (props: { data: SPAModel[] }) => {
                 }}
               />
               <YAxis />
-              <Tooltip />
+              <Tooltip
+                labelFormatter={(value) => {
+                  return dayjs(value).format('DD/MM-YYYY HH:mm');
+                }}
+              />
               <Legend align='right' />
               <Line name='Luft temperatur' type='monotone' dataKey='temp_air' stroke='#8884d8' />
               <Line name='Vand temperatur' type='monotone' dataKey='temp_water' stroke='#82ca9d' />
