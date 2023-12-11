@@ -6,9 +6,8 @@ import dayjs from 'dayjs';
 import next from 'next';
 
 async function getLastRecord() {
-  const url = process.env.baseurl;
-  const key = process.env.key;
-  const res = await fetch(`${url}/spa/last?Key=${key}`, {
+  const key = process.env.KEY ?? '';
+  const res = await fetch(`http:192.168.0.20:7000/spa/last?Key=${key}`, {
     next: { revalidate: 5 * 60, tags: ['spa', 'spaLastRecord'] },
   });
   // The return value is *not* serialized

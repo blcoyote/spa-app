@@ -39,11 +39,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: |
-            "HOSTNAME=${{ vars.HOSTNAME }}"
-            "BASEURL=${{ vars.BASEURL }}"
-            "KEY=${{ secrets.KEY }}"
-
 
   remove-old-artifacts:
     runs-on: ubuntu-latest
