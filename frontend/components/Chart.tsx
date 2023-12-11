@@ -36,8 +36,8 @@ export const Chart24h = (props: { data: SPAModel[] }) => {
               }}
             />
             <Legend align='right' />
-            <Line name='Luft' type='monotone' dataKey='temp_air' stroke='#8884d8' />
-            <Line name='Vand' type='monotone' dataKey='temp_water' stroke='#82ca9d' />
+            <Line name='Luft' type='monotone' dataKey='temp_air' stroke='#8884d8' strokeWidth={2} dot={false} />
+            <Line name='Vand' type='monotone' dataKey='temp_water' stroke='#82ca9d' strokeWidth={2} dot={false} />
           </LineChart>
         </ResponsiveContainer>
       </CardContent>
