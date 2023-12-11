@@ -3,7 +3,7 @@ services:
     spa:
         network_mode: web
         container_name: spa
-        image: spa-app:latest
+        image: spaapp:latest
         # env_file:
         #     - .env
         environment:
