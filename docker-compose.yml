@@ -7,6 +7,6 @@ services:
         # env_file:
         #     - .env
         environment:
-            - baseurl=$BASEURL
-            - host=$HOST
-            - key=$KEY
+            - BASEURL=$BASEURL
+            - HOSTNAME=$HOST
+            - KEY=$KEY
