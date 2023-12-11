@@ -40,8 +40,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            "baseurl=${{ secrets.baseurl }}"
-            "Key=${{ secrets.KEY }}"
+            "HOSTNAME=${{ variables.HOSTNAME }}"
+            "BASEURL=${{ variables.BASEURL }}"
+            "KEY=${{ secrets.KEY }}"
 
   remove-old-artifacts:
     runs-on: ubuntu-latest
