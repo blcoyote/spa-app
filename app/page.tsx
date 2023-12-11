@@ -25,7 +25,7 @@ async function getLastRecord() {
 }
 async function getLast24hRecord() {
   const key = process.env.KEY;
-  const res = await fetch(`http:192.168.0.20:7000/spa/last24h?Key=${key}`, {
+  const res = await fetch(`http:192.168.0.20:7000/spa/last24h?Key=${key ?? ''}`, {
     next: { revalidate: 5 * 60, tags: ['spa', 'spaLast24hRecord'] },
   });
   // The return value is *not* serialized
