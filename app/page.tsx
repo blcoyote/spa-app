@@ -61,7 +61,9 @@ export default async function Home() {
             date={timestamp.format('DD/MM-YYYY')}
             time={timestamp.format('HH:mm')}
           />
-          <Chart24h data={last24hRecord} />
+          <div className='mb-5'>
+            <Chart24h data={last24hRecord} />
+          </div>
         </div>
       </div>
     </div>
