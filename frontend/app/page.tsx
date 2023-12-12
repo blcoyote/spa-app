@@ -8,14 +8,10 @@ import next from 'next';
 async function getLastRecord() {
   const key = process.env.KEY ?? '';
   const res = await fetch(`http:192.168.0.20:7000/spa/last?Key=${key}`, {
-    next: { revalidate: 5 * 60, tags: ['spa', 'spaLastRecord'] },
+    cache: 'no-cache',
   });
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
-
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    console.log(res);
+    throw new Error(`Error: ${res.status}, ${res.statusText}`);
   }
 
   return res.json().then((data) => {
@@ -25,14 +21,11 @@ async function getLastRecord() {
 async function getLast24hRecord() {
   const key = process.env.KEY ?? '';
   const res = await fetch(`http:192.168.0.20:7000/spa/last24h?Key=${key}`, {
-    next: { revalidate: 5 * 60, tags: ['spa', 'spaLast24hRecord'] },
+    next: { revalidate: 200, tags: ['spa', 'spaLast24hRecord'] },
   });
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
 
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    console.log(res);
+    throw new Error(`Error: ${res.status}, ${res.statusText}`);
   }
 
   return res.json().then((data) => {
@@ -41,7 +34,14 @@ async function getLast24hRecord() {
 }
 
 export default async function Home() {
-  const lastRecord = await getLastRecord();
+  let lastRecord: SPAModel;
+  try {
+    lastRecord = await getLastRecord();
+  } catch (error) {
+    console.log(error);
+    return <div>Failed to fetch data</div>;
+  }
+
   const last24hRecord = await getLast24hRecord();
   const timestamp = dayjs(lastRecord.timestamp);
 

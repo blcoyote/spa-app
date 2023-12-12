@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           enableSystem
           disableTransitionOnChange
         >
-          <div className='container mx-auto p-5 h-screen bg-background'>
+          <div className='container md:mx-auto pb-5 h-screen bg-background'>
             <SpaMenuBar />
             <div className='p-3 md:p-10' />
             {children}
