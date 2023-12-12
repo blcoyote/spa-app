@@ -48,7 +48,7 @@ export default async function Home() {
   return (
     <div className='h-fit'>
       <div className=' mx-auto flex justify-center'>
-        <div className='grid w-full md:w-fit grid-flow-row-dense grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 lg:gap-20'>
+        <div className='grid w-full md:w-fit grid-flow-row-dense grid-cols-1 md:grid-cols-2 gap-5 md:gap-10'>
           <WeatherCard
             title='Luft-temperatur'
             temperature={roundTo(lastRecord.temp_air, 2)}
