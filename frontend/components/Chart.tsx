@@ -16,7 +16,7 @@ export const Chart24h = (props: { data: SPAModel[] }) => {
   return (
     <Card className='w-full drop-shadow-md'>
       <CardHeader>
-        <CardTitle className='text-lg font-semibold text-foreground'>Historik (24 timer)</CardTitle>
+        <CardTitle className='text-lg font-semibold text-foreground'>Seneste døgn</CardTitle>
       </CardHeader>
       <Separator />
       <CardContent>
