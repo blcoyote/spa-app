@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google'
 import '../style/globals.css';
 import SpaMenuBar from '@/components/SpaMenuBar';
 import { ThemeProvider } from '@/components/ThemeProvider';
-
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -14,7 +13,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <head />
+      <head>
+        <link rel='manifest' href='/manifest.json' />
+        <link rel='apple-touch-icon' href='/icon-512x512.png'></link>
+        <meta name='theme-color' content='#000' />
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute='class'
