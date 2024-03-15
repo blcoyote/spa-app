@@ -1,6 +1,6 @@
 import { Chart24h } from '@/components/Chart';
 import WeatherCard from '@/components/WeatherCard';
-import { SPAModel } from '@/models/spa.model';
+import type { SPAModel } from '@/models/spa.model';
 import { roundTo } from '@/lib/round';
 import dayjs from 'dayjs';
 import next from 'next';
