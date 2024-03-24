@@ -2,7 +2,7 @@
   "name": "SPA",
   "short_name": "SPA",
   "description": "Spa temperatur",
-  "start_url": "/",
+  "start_url": "/index.html",
   "display": "standalone",
   "theme_color": "#a300c4",
   "background_color": "#c46a00",
